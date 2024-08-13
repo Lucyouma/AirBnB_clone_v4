@@ -1,7 +1,7 @@
 $(document).ready(function () {
   const amenitiesChecked = [];
 
-  function updateStatusClass(status) {
+  function updateStatus(status) {
     const apiStatusDiv = $('#api_status');
 
     if (status == 'OK') {
@@ -11,7 +11,7 @@ $(document).ready(function () {
     }
   }
 
-  function createPlaceArticle(place) {
+  function createArticlePlace(place) {
     return `
           <article>
           <div class="title_box">
@@ -36,7 +36,7 @@ $(document).ready(function () {
   }
   $.get('http://0.0.0.0:5001/api/v1/status/', function (data) {
     const status = data.status;
-    updateStatusClass(status);
+    updateStatus(status);
   });
 
   $('input[type="checkbox"]').on('change', function () {
@@ -65,10 +65,10 @@ $(document).ready(function () {
 
 $.post('http://0.0.0.0:5001/api/v1/places_search/', {}, function (data) {
   const places = data;
-  const placesSection = $('.places');
+  const section = $('.places');
 
   places.forEach(function (place) {
-    const placeArticle = createPlaceArticle(place);
-    placesSection.append(placeArticle);
+    const article = createArticlePlace(place);
+    section.append(article);
   });
 });

@@ -71,8 +71,8 @@ $(document).ready(function () {
       section.empty();
 
       places.forEach(function (place) {
-        const placeArticle = createArticlePlace(place);
-        section.append(placeArticle);
+        const article = createArticlePlace(place);
+        section.append(article);
       });
     }).fail(function (xhr, textStatus, errorThrown) {
       console.error('Error fetching places:', errorThrown);
